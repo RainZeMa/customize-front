@@ -1,0 +1,22 @@
+.classify {
+  background-color: red;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  .search {
+    padding: 6px 10px;
+  }
+  .sort-area {
+    flex: 1;
+    display: flex;
+    overflow: auto;
+    .left-side-bar {
+      flex: none;
+    }
+    .left-side-content {
+      flex: auto;
+      overflow-y: scroll;
+    }
+  }
+}

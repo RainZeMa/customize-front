@@ -1,0 +1,38 @@
+.sort-good-list {
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+  .item {
+    display: flex;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: #fff;
+    margin: 0 6px 5px;
+
+    .item-message {
+      margin-left: 10px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      .item-title {
+        font-size: 14px;
+        font-weight: 600;
+      }
+      .item-introduce {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .item-price {
+          color: #ff5000;
+          font-size: 20px;
+          font-weight: 700;
+        }
+        .item-label {
+          font-size: 14px;
+          color: #999;
+        }
+      }
+    }
+  }
+}
