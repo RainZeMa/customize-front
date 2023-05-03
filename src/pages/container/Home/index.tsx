@@ -35,45 +35,54 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="home">
-      <PullToRefresh onRefresh={getGoods}>
-        <div className="search">
-          <SearchBar
-            placeholder="请输入内容"
-            style={{
-              "--border-radius": "100px",
-              "--background": "#ffffff",
-              "--height": "32px",
-              "--padding-left": "12px",
-            }}
+    <>
+      <div
+        className="home"
+        // Plugin start 首页样式定制
+        style={pluginSlot.onValue("home.page.style", {})}
+        // Plugin end
+      >
+        <PullToRefresh onRefresh={getGoods}>
+          <div className="search">
+            <SearchBar
+              placeholder="请输入内容"
+              style={{
+                "--border-radius": "100px",
+                "--background": "#ffffff",
+                "--height": "32px",
+                "--padding-left": "12px",
+              }}
+            />
+          </div>
+          {/* Plugin start 轮播图显示或隐藏 */}
+          {pluginSlot.onValue("home.swiper.visible", true) && (
+            <Swiper autoplay loop>
+              {swipers.map((item) => (
+                <Swiper.Item
+                  key={item._id}
+                  onClick={() => {
+                    navigate(`detail/${item._id}`);
+                  }}
+                >
+                  <Image width="100%" height={160} fit="cover" src={item.pic} />
+                </Swiper.Item>
+              ))}
+            </Swiper>
+          )}
+          {/* Plugin end */}
+          <HomeSortImage />
+          {/* Plugin start 瀑布流商品展示模块上边区域 */}
+          {pluginSlot.onDom("home.waterfall.top", waterfallTopArea.current)}
+          <div ref={waterfallTopArea}></div>
+          {/* Plugin end */}
+          {/* Plugin start 首页瀑布流数据过滤 */}
+          <Waterfall
+            items={pluginSlot.onFilter("home.waterfall.data", goods)}
           />
-        </div>
-        {/* Plugin start 轮播图显示或隐藏 */}
-        {pluginSlot.onValue("home.swiper.visible", true) && (
-          <Swiper autoplay loop>
-            {swipers.map((item) => (
-              <Swiper.Item
-                key={item._id}
-                onClick={() => {
-                  navigate(`detail/${item._id}`);
-                }}
-              >
-                <Image width="100%" height={160} fit="cover" src={item.pic} />
-              </Swiper.Item>
-            ))}
-          </Swiper>
-        )}
-        {/* Plugin end */}
-        <HomeSortImage />
-        {/* Plugin start 瀑布流商品展示模块上边区域 */}
-        {pluginSlot.onDom("home.waterfall.top", waterfallTopArea.current)}
-        <div ref={waterfallTopArea}></div>
-        {/* Plugin end */}
-        {/* Plugin start 首页瀑布流数据过滤 */}
-        <Waterfall items={pluginSlot.onFilter("home.waterfall.data", goods)} />
-        {/* Plugin end */}
-        <InfiniteScroll hasMore={hasMore} loadMore={loadMore} />
-      </PullToRefresh>
-    </div>
+          {/* Plugin end */}
+          <InfiniteScroll hasMore={hasMore} loadMore={loadMore} />
+        </PullToRefresh>
+      </div>
+    </>
   );
 }

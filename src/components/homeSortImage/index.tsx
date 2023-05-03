@@ -80,12 +80,14 @@ export default function HomeSortImage() {
           <Grid.Item
             key={item.type}
             className="sort-list-item"
+            // Plugin start 首页分类图片点击事件定制
             onClick={() => {
               pluginSlot.onSyncEvent("home.sortImage.click", () => {
                 navigate(`/classify?type=${item.type}`);
                 setActiveTabBarKey("/classify");
               });
             }}
+            // Plugin end
           >
             <Image src={item.icon} width={50} height={50} />
             <div>{item.title}</div>
