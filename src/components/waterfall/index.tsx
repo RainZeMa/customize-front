@@ -3,16 +3,24 @@ import Masonry from "react-responsive-masonry";
 import "./waterfall.scss";
 import { IGood } from "../../interfaces";
 import { Ellipsis } from "antd-mobile";
+import { useNavigate } from "react-router-dom";
 
 interface IProps {
   items: IGood[];
 }
 
 export default function Waterfall({ items }: IProps) {
+  const navigate = useNavigate();
   return (
     <Masonry columnsCount={2} gutter="10px">
       {items.map((item) => (
-        <div key={item._id} className="waterfall-item">
+        <div
+          key={item._id}
+          className="waterfall-item"
+          onClick={() => {
+            navigate(`/detail/${item._id}`);
+          }}
+        >
           <img
             className="waterfall-image"
             src={item.pic}

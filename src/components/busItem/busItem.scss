@@ -1,0 +1,34 @@
+.bus-item {
+  display: flex;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #fff;
+  margin: 6px;
+
+  .pic {
+    margin: 0 10px;
+  }
+
+  .item-message {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    .item-title {
+      font-size: 14px;
+      font-weight: 600;
+    }
+    .item-introduce {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      .item-price {
+        color: #ff5000;
+        font-size: 20px;
+        font-weight: 700;
+      }
+      .item-label {
+      }
+    }
+  }
+}

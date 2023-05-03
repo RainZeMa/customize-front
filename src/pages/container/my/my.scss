@@ -1,1 +1,15 @@
-
+.my {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  background-color: #eee;
+  .user {
+    margin: 10px;
+    background-color: #fff;
+    display: flex;
+    padding: 20px;
+    align-items: center;
+    border-radius: 10px;
+  }
+}

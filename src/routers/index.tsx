@@ -5,7 +5,7 @@ import Home from "../pages/container/Home";
 import Classify from "../pages/container/classify";
 import ShoppingCart from "../pages/container/shoppingCart";
 import My from "../pages/container/my";
-import DetailPage from "../pages/container/detailPage";
+import DetailPage from "../pages/detailPage";
 import NotFound from "../pages/notFound";
 import Login from "../pages/login";
 import SignIn from "../pages/login/signIn";
@@ -33,11 +33,11 @@ export default function Routers() {
           path: "my",
           element: <My />,
         },
-        {
-          path: "detail/:_id",
-          element: <DetailPage />,
-        },
       ],
+    },
+    {
+      path: "detail/:_id",
+      element: <DetailPage />,
     },
     {
       path: "login",

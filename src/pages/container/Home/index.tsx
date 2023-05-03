@@ -13,8 +13,10 @@ import HomeSortImage from "../../../components/homeSortImage";
 import Waterfall from "../../../components/waterfall";
 import useGoodList from "../../../hooks/usegoodList";
 import pluginSlot from "../../../services/plugin";
+import { useNavigate } from "react-router-dom";
 
 export default function Home() {
+  const navigate = useNavigate();
   const [swipers, setSwipers] = useState<ISwiperItem[]>([]);
   const { goods, getGoods, loadMore, hasMore } = useGoodList();
   // Plugin start 瀑布流上面区域
@@ -31,12 +33,6 @@ export default function Home() {
   useEffect(() => {
     getSwipers();
   }, []);
-
-  // useEffect(() => {
-  //   if (waterfallTopArea.current) {
-  //     pluginSlot.onDom("home.waterfall.top", waterfallTopArea);
-  //   }
-  // }, []);
 
   return (
     <div className="home">
@@ -56,7 +52,12 @@ export default function Home() {
         {pluginSlot.onValue("home.swiper.visible", true) && (
           <Swiper autoplay loop>
             {swipers.map((item) => (
-              <Swiper.Item key={item._id}>
+              <Swiper.Item
+                key={item._id}
+                onClick={() => {
+                  navigate(`detail/${item._id}`);
+                }}
+              >
                 <Image width="100%" height={160} fit="cover" src={item.pic} />
               </Swiper.Item>
             ))}

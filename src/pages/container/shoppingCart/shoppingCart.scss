@@ -1,0 +1,40 @@
+.shopping-cart {
+  height: 100%;
+  background-color: #eee;
+  display: flex;
+  flex-direction: column;
+  .shopping-content {
+    flex: 1;
+    overflow-y: scroll;
+  }
+  .shopping-footer {
+    height: 50px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    .footer-right {
+      display: flex;
+      align-items: center;
+      .total-price {
+        display: flex;
+        .price {
+          color: #ff5000;
+          font-size: 20px;
+          font-weight: 700;
+        }
+      }
+      .footer-btn {
+        margin-left: 10px;
+        width: 100px;
+        text-align: center;
+        height: 36px;
+        line-height: 36px;
+        border-radius: 18px;
+        font-size: 16px;
+        background-color: rgb(255, 200, 0);
+      }
+    }
+  }
+}

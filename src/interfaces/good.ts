@@ -37,3 +37,9 @@ export interface IGetGoodsResponse extends ApiResp {
     total: number;
   };
 }
+
+export interface IGetGoodInfo extends ApiResp {
+  data: {
+    item: IGood;
+  };
+}
