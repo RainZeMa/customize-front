@@ -1,9 +1,7 @@
-import { AxiosResponse } from "axios";
 import {
   ISwipersResponse,
   IGetGoodsRequest,
   IGetGoodsResponse,
-  IGood,
   IGetGoodInfo,
 } from "../interfaces";
 import request from "./request";

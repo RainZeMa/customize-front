@@ -1,16 +1,4 @@
 class PluginSlot {
-  //   on(event:string,defaultValue:any) {
-  // try {
-  //   const value =  window.ProjectPlugin.eventStore.find(item=>item.event===event)
-  //   if(!value){
-  //     return defaultValue
-  //   }
-
-  // }catch (error) {
-  //   console.log(error)
-  //   return defaultValue
-  // }
-  // }
   onValue(event: string, defaultValue: any) {
     try {
       const item = window.ProjectPlugin.valueStore.find(
@@ -47,12 +35,10 @@ class PluginSlot {
       const item = window.ProjectPlugin.filterStore.find(
         (item) => item.event === event
       );
-      console.log("ZZZ", item);
       if (!item) {
         return defaultValue;
       }
       const newValue = item.callback(defaultValue);
-      console.log("YYY", newValue);
       return newValue;
     } catch (error) {
       console.log(error);
@@ -65,7 +51,6 @@ class PluginSlot {
       const item = window.ProjectPlugin.syncEventStore.find(
         (item) => item.event === event
       );
-      console.log("ZZZ", item);
       if (!item) {
         return fun();
       }
@@ -73,6 +58,21 @@ class PluginSlot {
     } catch (error) {
       console.log(error);
       return fun();
+    }
+  }
+
+  async onAsyncEvent(event: string, fun: any) {
+    try {
+      const item = window.ProjectPlugin.syncEventStore.find(
+        (item) => item.event === event
+      );
+      if (!item) {
+        return await fun();
+      }
+      await item.callback(fun);
+    } catch (error) {
+      console.log(error);
+      return await fun();
     }
   }
 }
